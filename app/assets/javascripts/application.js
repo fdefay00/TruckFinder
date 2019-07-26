@@ -15,7 +15,7 @@
 //= require turbolinks
 //= require_tree .
 /* global $ */
-/*
+
 $(document).on('turbolinks:load', function(){
   if ($('#map').length > 0){
     // Google Maps Javascript API
@@ -24,4 +24,3 @@ $(document).on('turbolinks:load', function(){
   }
 })
 
-*/
