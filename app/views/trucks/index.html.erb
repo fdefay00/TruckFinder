@@ -1,8 +1,11 @@
 <h1>Index page for trucks</h1>
-
+<p><%= @trucks.find(89).applicant %> </p>
 
 <h1>Trucks</h1>
 
+<input id="pac-input" class="controls" type="text" placeholder="Search Box">
+    <div id="map"></div>
+    
 <table>
   <thead>
     <tr>
@@ -20,6 +23,12 @@
         <td><%= truck.latitude %></td>
         <td><%= truck.longitude %></td>
         <td><%= link_to 'Show', truck %></td>
+        <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            initMap(<%= truck.latitude %>, <%= truck.longitude %>)
+        });
+      
+    </script> 
       </tr>
     <% end %>
   </tbody>
