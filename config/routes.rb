@@ -7,5 +7,5 @@ Rails.application.routes.draw do
       get :map
     end
   end
-  root 'application#hello'
+  root 'trucks#index'
 end

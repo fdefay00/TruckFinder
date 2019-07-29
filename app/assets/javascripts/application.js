@@ -15,16 +15,7 @@
 //= require turbolinks
 //= require_tree .
 /* global $ */
-/*
-$(document).on('turbolinks:load', function(){
-  if ($('#map').length > 0){
-    // Google Maps Javascript API
-    var google_map = $('meta[name=google_maps]').attr("content");
-    $.getScript(`https://maps.googleapis.com/maps/api/js?key=${google_map}&callback=initMap`);
-  }
-})
 
-*/
 
 // This example adds a search box to a map, using the Google Place Autocomplete
       // feature. People can enter geographical searches. The search box will return a
@@ -52,19 +43,65 @@ $(document).on('turbolinks:load', function(){
         map.addListener('bounds_changed', function() {
           searchBox.setBounds(map.getBounds());
         });
+        var markers = [];
+        // Listen for the event fired when the user selects a prediction and retrieve
+        // more details for that place.
+        searchBox.addListener('places_changed', function() {
+          var places = searchBox.getPlaces();
+
+          if (places.length == 0) {
+            return;
+          }
+
+          // Clear out the old markers.
+          markers.forEach(function(marker) {
+            marker.setMap(null);
+          });
+          markers = [];
+             // For each place, get the icon, name and location.
+          var bounds = new google.maps.LatLngBounds();
+          places.forEach(function(place) {
+            if (!place.geometry) {
+              console.log("Returned place contains no geometry");
+              return;
+            }
+            var icon = {
+              url: place.icon,
+              size: new google.maps.Size(71, 71),
+              origin: new google.maps.Point(0, 0),
+              anchor: new google.maps.Point(17, 34),
+              scaledSize: new google.maps.Size(25, 25)
+            };
+
+            // Create a marker for each place.
+            markers.push(new google.maps.Marker({
+              map: map,
+              icon: icon,
+              title: place.name,
+              position: place.geometry.location
+            }));
+
+            if (place.geometry.viewport) {
+              // Only geocodes have viewport.
+              bounds.union(place.geometry.viewport);
+            } else {
+              bounds.extend(place.geometry.location);
+            }
+          });
+          map.fitBounds(bounds);
+        });
+        
       }
       
-      
+      //infowindow = new (google.maps.InfoWindow);
       function initMap(lat, lng) {
         
         var myCoords = new google.maps.LatLng(lat, lng);
         
-        
-        
-    var marker = new google.maps.Marker({
-        position: myCoords,
-        map: map
-    });
+        var marker = new google.maps.Marker({
+            position: myCoords,
+            map: map
+        });
 
       
 }

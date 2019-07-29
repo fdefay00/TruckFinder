@@ -6,11 +6,18 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_uedkUhej50TIIJbseQ1VezXs-3HUztM&libraries=places&callback=initAutocomplete"
-         async defer></script>  
+      
   </head>
 
   <body>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <p  id= "logo">  truckfinder </p>
+        
+        
+      </div>
+    </header>
+    
     <%= yield %>
   </body>
 </html>
