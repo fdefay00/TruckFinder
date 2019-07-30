@@ -1,4 +1,7 @@
 class TrucksController < ApplicationController
+  
+  # GET /trucks
+  # GET /trucks.json
   def index
     @trucks = Truck.all
   end

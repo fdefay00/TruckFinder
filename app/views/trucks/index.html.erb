@@ -1,20 +1,9 @@
-
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_uedkUhej50TIIJbseQ1VezXs-3HUztM&libraries=places&callback=initAutocomplete"
+         async defer></script> 
 
 <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-    <div id="map"></div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_uedkUhej50TIIJbseQ1VezXs-3HUztM&libraries=places&callback=initAutocomplete"
-         async defer></script>
+<div id="map"></div>
+
 
   
-    <% @trucks.each do |truck| %>
-     <div class="truck-details" data-truck="<%= truck.applicant %>">
-    </div>
-        <script>
-        document.addEventListener("DOMContentLoaded", function(){
-            initMap( <%= truck.latitude %>, <%= truck.longitude %>)
-        });
-      
-    </script> 
-      
-    <% end %>
-  
+ 
