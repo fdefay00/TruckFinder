@@ -7,7 +7,8 @@ Create a service (front-end + back-end) that tells the user what food trucks mig
 
 ## User Guide
 
-This app lets you find food truck that may be near a specific location on a map
+This app lets you find food truck that may be near a specific location on a map.
+Link to application: https://dry-plains-17061.herokuapp.com/
 
 ## UI
 Map shows truck location. An icon will represent a truck in a specific location on any active area of the map.
